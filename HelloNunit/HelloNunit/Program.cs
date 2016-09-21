@@ -10,14 +10,15 @@ namespace HelloNunit
 
         public static void Main(string[] args)
         {
-            // Normally this dependency would be fulfilled by the IoC
+            // Normally these dependencies would be fulfilled by the IoC
             // container.
             IConsoleWriter consoleWriter = new ConsoleWriter();
+            ILogger logger = new BitBucketLogger();
 
             // Greeter is our composition root, usually we would
             // resolve from an IoC container here instead of directly
             // instantiating.
-            greeter = new Greeter(consoleWriter);
+            greeter = new Greeter(consoleWriter, logger);
         }
     }
 }

@@ -43,10 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BitBucketLogger.cs" />
     <Compile Include="FrameworkWrappers\ConsoleWriter.cs" />
     <Compile Include="FrameworkWrappers\IConsoleWriter.cs" />
     <Compile Include="Greeter.cs" />
     <Compile Include="IGreeter.cs" />
+    <Compile Include="ILogger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
