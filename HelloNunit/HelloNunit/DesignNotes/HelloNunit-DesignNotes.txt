@@ -22,7 +22,7 @@ Stub out initial test for Program.cs
 Tests:
 	Constructor_Always_Succeeds
 ===================================================
-Program.cs Implementation
+Introduce Greeter
 
 IGreeter
 	void Greet(string userName)
@@ -38,6 +38,21 @@ Program
 
 ProgramTests [Delete]
 	
+===================================================
+Implement Greeter
+
+IConsoleWriter
+	void WriteLine(message, params string[] args)
+
+ConsoleWriterImpl : IConsoleWriter
+
+Greeter
+	.ctor(IConsoleWriter writer)
+
+GreeterTests
+	Add Mock<IConsoleWriter> and inject into constructor
+	Greet_Always_PerformsExpectedWork
+
 ===================================================
 
 
