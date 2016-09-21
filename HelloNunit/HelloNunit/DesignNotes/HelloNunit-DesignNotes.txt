@@ -2,7 +2,8 @@ Design Notes:  Hello NUnit
 ===================================================
 Assumptions:  
 
-- Not using actual dependency injection
+- Not using actual IoC container, dependency injection
+is manual.
 ===================================================
 Description:
 
@@ -14,11 +15,29 @@ Concepts Illustrated:
 - Test-Driven Development
 - NUnit
 - Moq
+- Dependency Injection
 ===================================================
 Stub out initial test for Program.cs
 
 Tests:
 	Constructor_Always_Succeeds
+===================================================
+Program.cs Implementation
+
+IGreeter
+	void Greet(string userName)
+
+Greeter : IGreeter [stub]
+
+GreeterTests
+	Constructor_Always_Succeeds [stub]
+
+Program
+	Main
+		Instantiate Greeter
+
+ProgramTests [Delete]
+	
 ===================================================
 
 
