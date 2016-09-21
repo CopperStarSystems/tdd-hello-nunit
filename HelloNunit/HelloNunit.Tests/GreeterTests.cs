@@ -12,18 +12,19 @@ namespace HelloNunit.Tests
         Mock<IConsoleWriter> mockConsoleWriter;
         Greeter systemUnderTest;
 
-        [Test]
-        public void Greet_Always_PerformsExpectedWork()
+        [TestCase("World")]
+        [TestCase("Name")]
+        public void Greet_Always_PerformsExpectedWork(string userName)
         {
-            mockConsoleWriter.Setup(p => p.WriteLine("Hello World"));
-            systemUnderTest.Greet("World");
+            mockConsoleWriter.Setup(p => p.WriteLine("Hello, {0}", userName));
+            systemUnderTest.Greet(userName);
             mockConsoleWriter.VerifyAll();
         }
 
         [SetUp]
         public void SetUp()
         {
-            mockConsoleWriter = new Mock<IConsoleWriter>();
+            mockConsoleWriter = new Mock<IConsoleWriter>(MockBehavior.Strict);
             systemUnderTest = new Greeter(mockConsoleWriter.Object);
         }
     }

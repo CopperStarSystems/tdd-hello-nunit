@@ -54,5 +54,18 @@ GreeterTests
 	Greet_Always_PerformsExpectedWork
 
 ===================================================
+Add parameterized tests for Greeter
+
+GreeterTests
+	Greet_Always_PerformsExpectedWork
+		Add TestCaseAttributes with specific test cases
+		Add inbound string parameter
+		Update mock expectation to use inbound parameter
+
+Greeter
+	Greet
+		Update consoleWriter invocation to pass userName parameter
+		and formatstring
+===================================================
 
 

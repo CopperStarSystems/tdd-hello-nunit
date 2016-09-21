@@ -15,7 +15,7 @@ namespace HelloNunit
 
         public void Greet(string userName)
         {
-            consoleWriter.WriteLine("Hello World");
+            consoleWriter.WriteLine("Hello, {0}", userName);
         }
     }
 }
