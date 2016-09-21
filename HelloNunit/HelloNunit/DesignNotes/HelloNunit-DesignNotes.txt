@@ -91,6 +91,18 @@ GreeterTests
 	Update to use MockRepository instead of individual mock creation
 	Add Mock<ILogger>
 	Add CreateMocks method
-	
+===================================================
+Extract base test class
 
+[TestFixture]
+abstract TestBase<T> where T: class
+	Move extracted methods from GreeterTests to base
+
+GreeterTests
+	Change to inherit from TestBase<Greeter>
+	Remove methods extracted to TestBase
+
+BitBucketLogger
+	Change to inherit from TestBase<BitBucketLogger>
+	Remove redundant methods and fields
 ===================================================

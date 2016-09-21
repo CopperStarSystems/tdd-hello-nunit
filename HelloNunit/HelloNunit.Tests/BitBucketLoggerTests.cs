@@ -5,21 +5,18 @@ using NUnit.Framework;
 namespace HelloNunit.Tests
 {
     [TestFixture]
-    public class BitBucketLoggerTests
+    public class BitBucketLoggerTests : TestBase<BitBucketLogger>
     {
-        BitBucketLogger systemUnderTest;
-
         [Test]
         public void Constructor_Always_Succeeds()
         {
             // Stub test
-            Assert.That(systemUnderTest, Is.Not.Null);
+            Assert.That(SystemUnderTest, Is.Not.Null);
         }
 
-        [SetUp]
-        public void SetUp()
+        protected override BitBucketLogger CreateSystemUnderTest()
         {
-            systemUnderTest = new BitBucketLogger();
+            return new BitBucketLogger();
         }
     }
 }
