@@ -19,25 +19,47 @@ namespace HelloNunit.Tests
         [TestCase("Name")]
         public void Greet_Always_PerformsExpectedWork(string userName)
         {
-            mockConsoleWriter.Setup(p => p.WriteLine("Hello, {0}", userName));
             var logMessage = GenerateLogMessage(userName);
+            mockConsoleWriter.Setup(p => p.WriteLine("Hello, {0}", userName));
             mockLogger.Setup(p => p.Log(logMessage));
+
             systemUnderTest.Greet(userName);
-            mockConsoleWriter.VerifyAll();
-            mockLogger.VerifyAll();
+            MockRepositoryVerifyAll();
         }
 
         [SetUp]
         public void SetUp()
         {
-            mockConsoleWriter = new Mock<IConsoleWriter>(MockBehavior.Strict);
-            mockLogger = new Mock<ILogger>();
-            systemUnderTest = new Greeter(mockConsoleWriter.Object, mockLogger.Object);
+            mockRepository = new MockRepository(MockBehavior.Strict);
+
+            CreateMocks();
+            systemUnderTest = CreateSystemUnderTest();
         }
 
         static string GenerateLogMessage(string userName)
         {
             return $"Greeted {userName}";
+        }
+
+        Mock<T> CreateMock<T>() where T : class
+        {
+            return mockRepository.Create<T>();
+        }
+
+        void CreateMocks()
+        {
+            mockConsoleWriter = CreateMock<IConsoleWriter>();
+            mockLogger = CreateMock<ILogger>();
+        }
+
+        Greeter CreateSystemUnderTest()
+        {
+            return new Greeter(mockConsoleWriter.Object, mockLogger.Object);
+        }
+
+        void MockRepositoryVerifyAll()
+        {
+            mockRepository.VerifyAll();
         }
     }
 }

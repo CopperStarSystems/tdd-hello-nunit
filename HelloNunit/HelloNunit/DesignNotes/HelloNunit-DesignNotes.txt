@@ -82,10 +82,15 @@ BitBucketLoggerTests
 Greeter
 	.ctor(..., ILogger logger)
 
+Program
+	Update to inject ILogger into Greeter instance
+===================================================
+Clean up GreeterTests before refactoring
+
 GreeterTests
 	Update to use MockRepository instead of individual mock creation
 	Add Mock<ILogger>
+	Add CreateMocks method
+	
 
-Program
-	Update to inject ILogger into Greeter instance
 ===================================================
