@@ -7,6 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloNunit", "HelloNunit\He
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloNunit.Tests", "HelloNunit.Tests\HelloNunit.Tests.csproj", "{ADCE3B57-4120-44C6-AFD1-4FDB6C15C0FF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DesignNotes", "DesignNotes", "{9D27AD64-19B3-4427-9584-8FE44C475C4A}"
+	ProjectSection(SolutionItems) = preProject
+		HelloNunit\DesignNotes\HelloNunit-DesignNotes.txt = HelloNunit\DesignNotes\HelloNunit-DesignNotes.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

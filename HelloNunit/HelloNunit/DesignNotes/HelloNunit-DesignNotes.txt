@@ -1,0 +1,24 @@
+Design Notes:  Hello NUnit
+===================================================
+Assumptions:  
+
+- Not using actual dependency injection
+===================================================
+Description:
+
+Console application that accepts input and writes it
+back to the console as a greeting.
+===================================================
+Concepts Illustrated:
+- Top-down design
+- Test-Driven Development
+- NUnit
+- Moq
+===================================================
+Stub out initial test for Program.cs
+
+Tests:
+	Constructor_Always_Succeeds
+===================================================
+
+
