@@ -32,7 +32,12 @@ namespace HelloNunit.Tests
         {
             CreateMockRepository();
             CreateMocks();
+            SetUpConstructorRequiredMocks();
             SystemUnderTest = CreateSystemUnderTest();
+        }
+
+        protected virtual void SetUpConstructorRequiredMocks()
+        {
         }
 
         void CreateMockRepository()

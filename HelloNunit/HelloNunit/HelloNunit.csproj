@@ -45,6 +45,8 @@
   <ItemGroup>
     <Compile Include="BitBucketLogger.cs" />
     <Compile Include="ConsoleLogger.cs" />
+    <Compile Include="Factories\ILoggerFactory.cs" />
+    <Compile Include="Factories\LoggerFactory.cs" />
     <Compile Include="FrameworkWrappers\ConsoleWriter.cs" />
     <Compile Include="FrameworkWrappers\IConsoleWriter.cs" />
     <Compile Include="Greeter.cs" />
@@ -60,6 +62,7 @@
   <ItemGroup>
     <Content Include="FrameworkWrappers\FrameworkWrappersReadMe.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

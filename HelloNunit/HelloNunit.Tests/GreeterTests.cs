@@ -1,5 +1,6 @@
 ﻿// HelloNunit.HelloNunit.Tests.GreeterTests.cs
 
+using HelloNunit.Factories;
 using HelloNunit.FrameworkWrappers;
 using Moq;
 using NUnit.Framework;
@@ -11,6 +12,7 @@ namespace HelloNunit.Tests
     {
         Mock<IConsoleWriter> mockConsoleWriter;
         Mock<ILogger> mockLogger;
+        Mock<ILoggerFactory> mockLoggerFactory;
 
         [TestCase("World")]
         [TestCase("Name")]
@@ -26,11 +28,18 @@ namespace HelloNunit.Tests
             base.CreateMocks();
             mockConsoleWriter = CreateMock<IConsoleWriter>();
             mockLogger = CreateMock<ILogger>();
+            mockLoggerFactory = CreateMock<ILoggerFactory>();
+        }
+
+        protected override void SetUpConstructorRequiredMocks()
+        {
+            base.SetUpConstructorRequiredMocks();
+            mockLoggerFactory.Setup(p => p.Create(mockConsoleWriter.Object)).Returns(mockLogger.Object);
         }
 
         protected override Greeter CreateSystemUnderTest()
         {
-            return new Greeter(mockConsoleWriter.Object, mockLogger.Object);
+            return new Greeter(mockConsoleWriter.Object, mockLoggerFactory.Object);
         }
 
         static string GenerateLogMessage(string userName)

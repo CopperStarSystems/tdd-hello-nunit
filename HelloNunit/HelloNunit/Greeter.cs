@@ -1,5 +1,6 @@
 ﻿// HelloNunit.HelloNunit.Greeter.cs
 
+using HelloNunit.Factories;
 using HelloNunit.FrameworkWrappers;
 
 namespace HelloNunit
@@ -9,10 +10,10 @@ namespace HelloNunit
         readonly IConsoleWriter consoleWriter;
         readonly ILogger logger;
 
-        public Greeter(IConsoleWriter consoleWriter, ILogger logger)
+        public Greeter(IConsoleWriter consoleWriter, ILoggerFactory loggerFactory)
         {
             this.consoleWriter = consoleWriter;
-            this.logger = logger;
+            this.logger = loggerFactory.Create(consoleWriter);
         }
 
         public void Greet(string userName)

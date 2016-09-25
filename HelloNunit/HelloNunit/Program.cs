@@ -1,5 +1,6 @@
 ﻿// HelloNunit.HelloNunit.Program.cs
 
+using HelloNunit.Factories;
 using HelloNunit.FrameworkWrappers;
 
 namespace HelloNunit
@@ -17,12 +18,15 @@ namespace HelloNunit
             // Switching out for Console logger
             // ILogger logger = new BitBucketLogger();
 
-            ILogger logger = new ConsoleLogger(consoleWriter);
+            // Switching out to use LoggerFactory
+            // ILogger logger = new ConsoleLogger(consoleWriter);
+
+            ILoggerFactory loggerFactory = new LoggerFactory();
 
             // Greeter is our composition root, usually we would
             // resolve from an IoC container here instead of directly
             // instantiating.
-            greeter = new Greeter(consoleWriter, logger);
+            greeter = new Greeter(consoleWriter, loggerFactory);
         }
     }
 }

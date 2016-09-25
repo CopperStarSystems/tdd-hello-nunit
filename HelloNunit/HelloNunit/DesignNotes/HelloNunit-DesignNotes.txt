@@ -121,3 +121,17 @@ Introduce ConsoleLoggerTests class
 Introduce ConsoleLogger class
 Update Program.cs to use ConsoleLogger in place of BitBucketLogger
 ===================================================
+Introduce ILoggerFactory
+
+ILoggerFactory
+	T Create<T> where T: class, LoggerBase
+
+	IConsoleLogger Create(IConsoleWriter consoleWriter);
+
+LoggerFactory : ILoggerFactory
+
+update Greeter to take ILoggerFactory instead of ILogger
+	create ConsoleLogger in constructor
+
+update GreeterTests to reflect changes
+===================================================
