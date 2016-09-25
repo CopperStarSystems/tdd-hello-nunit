@@ -112,5 +112,12 @@ Introduce abstract LoggerBase class
 Introduce abstract LoggerBaseTests class
 Update BitBucketLogger to descend from LoggerBase
 Update BitBucketLoggerTests to descend from LoggerBaseTests
+===================================================
+Introduce ConsoleLogger class
 
+Introduce ConsoleLoggerTests class
+	Implement SetupMocksForLogTest
+
+Introduce ConsoleLogger class
+Update Program.cs to use ConsoleLogger in place of BitBucketLogger
 ===================================================

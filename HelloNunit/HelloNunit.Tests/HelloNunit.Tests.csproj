@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BitBucketLoggerTests.cs" />
+    <Compile Include="ConsoleLoggerTests.cs" />
     <Compile Include="GreeterTests.cs" />
     <Compile Include="LoggerBaseTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

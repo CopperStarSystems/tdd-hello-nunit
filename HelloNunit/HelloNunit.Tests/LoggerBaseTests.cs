@@ -12,6 +12,8 @@ namespace HelloNunit.Tests
         public void Log_Always_PerformsExpectedWork(string message)
         {
             SetUpMocksForLogTest(message);
+            SystemUnderTest.Log(message);
+            MockRepositoryVerifyAll();
         }
 
         protected virtual void SetUpMocksForLogTest(string message)
