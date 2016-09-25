@@ -2,10 +2,11 @@
 
 namespace HelloNunit
 {
-    public class BitBucketLogger : ILogger
+    public class BitBucketLogger : LoggerBase
     {
-        public void Log(string message)
+        protected override void LogInternal(string message)
         {
+            // Send the message to the bit bucket (i.e. discard it).
         }
     }
 }
