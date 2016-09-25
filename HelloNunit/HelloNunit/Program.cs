@@ -1,32 +1,50 @@
 ﻿// HelloNunit.HelloNunit.Program.cs
 
-using HelloNunit.Factories;
-using HelloNunit.FrameworkWrappers;
+using System;
+using System.Collections.Generic;
+using Castle.Windsor;
+using HelloNunit.Bootstrap;
 
 namespace HelloNunit
 {
     public class Program
     {
-        static IGreeter greeter;
-
         public static void Main(string[] args)
         {
-            // Normally these dependencies would be fulfilled by the IoC
-            // container.
-            IConsoleWriter consoleWriter = new ConsoleWriter();
+            var name = ExtractName(args);
+            var container = BootstrapContainer();
 
-            // Switching out for Console logger
-            // ILogger logger = new BitBucketLogger();
+            var greeter = CreateCompositionRoot(container);
+            GreetUser(greeter, name);
+            WaitForKeyPress();
+        }
 
-            // Switching out to use LoggerFactory
-            // ILogger logger = new ConsoleLogger(consoleWriter);
+        static IWindsorContainer BootstrapContainer()
+        {
+            return Bootstrapper.Bootstrap();
+        }
 
-            ILoggerFactory loggerFactory = new LoggerFactory();
+        static IGreeter CreateCompositionRoot(IWindsorContainer container)
+        {
+            var greeter = container.Resolve<IGreeter>();
+            return greeter;
+        }
 
-            // Greeter is our composition root, usually we would
-            // resolve from an IoC container here instead of directly
-            // instantiating.
-            greeter = new Greeter(consoleWriter, loggerFactory);
+        static string ExtractName(IReadOnlyList<string> args)
+        {
+            if (args.Count > 1)
+                return args[1];
+            return "World";
+        }
+
+        static void GreetUser(IGreeter greeter, string name)
+        {
+            greeter.Greet(name);
+        }
+
+        static void WaitForKeyPress()
+        {
+            Console.ReadKey();
         }
     }
 }
